@@ -1,0 +1,113 @@
+package com.crmpro_project.pages;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.crmpro_project.baseclass.BaseClass;
+
+
+
+public class CRMLogin extends BaseClass {
+	public void methodForUsernName(String locatortype, String locatorvalue){
+		if(locatortype.equalsIgnoreCase("id")){
+			driver.findElement(By.id(locatorvalue)).sendKeys(prop.getProperty("userName"));
+		}else
+			if(locatortype.equalsIgnoreCase("name")){
+				driver.findElement(By.name(locatorvalue)).sendKeys(prop.getProperty("userName"));
+			}
+			else
+				if(locatortype.equalsIgnoreCase("className")){
+					driver.findElement(By.className(locatorvalue)).sendKeys(prop.getProperty("userName"));
+				}else
+					if(locatortype.equalsIgnoreCase("xpath")){
+						driver.findElement(By.xpath(locatorvalue)).sendKeys(prop.getProperty("userName"));
+					}else
+						if(locatortype.equalsIgnoreCase("cssSelector")){
+							driver.findElement(By.cssSelector(locatorvalue)).sendKeys(prop.getProperty("userName"));
+						}
+		
+	}
+	public void methodForPassword(String locatortype, String locatorvalue){
+		if(locatortype.equalsIgnoreCase("id")){
+			driver.findElement(By.id(locatorvalue)).sendKeys(prop.getProperty("passWord"));
+		}else
+			if(locatortype.equalsIgnoreCase("name")){
+				driver.findElement(By.name(locatorvalue)).sendKeys(prop.getProperty("passWord"));
+			}else
+				if(locatortype.equalsIgnoreCase("className")){
+					driver.findElement(By.className(locatorvalue)).sendKeys(prop.getProperty("passWord"));
+				}else
+					if(locatortype.equalsIgnoreCase("xpath")){
+						driver.findElement(By.xpath(locatorvalue)).sendKeys(prop.getProperty("passWord"));
+					}else
+						if(locatortype.equalsIgnoreCase("cssSelector")){
+							driver.findElement(By.cssSelector(locatorvalue)).sendKeys(prop.getProperty("passWord"));
+						}
+		
+	}
+	
+	public void waitElement() throws Exception{
+		Thread.sleep(2000);
+	}
+	
+	public void clickLogin(String locatortype, String locatorvalue){
+		try{
+		 WebDriverWait wait = new WebDriverWait(driver,20);
+if(locatortype.equalsIgnoreCase("id")){
+	       wait.until(ExpectedConditions.elementToBeClickable(By.id(locatorvalue)));
+			driver.findElement(By.id(locatorvalue)).click();
+		}else
+			if(locatortype.equalsIgnoreCase("name")){
+				 wait.until(ExpectedConditions.elementToBeClickable(By.name(locatorvalue)));
+				driver.findElement(By.name(locatorvalue)).click();
+			}else
+				if(locatortype.equalsIgnoreCase("className")){
+					  wait.until(ExpectedConditions.elementToBeClickable(By.className(locatorvalue)));
+					driver.findElement(By.className(locatorvalue)).click();
+				}else
+					if(locatortype.equalsIgnoreCase("xpath")){
+						wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locatorvalue)));
+						driver.findElement(By.xpath(locatorvalue)).click();
+					}else
+						if(locatortype.equalsIgnoreCase("cssSelector")){
+							wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(locatorvalue)));
+							driver.findElement(By.cssSelector(locatorvalue)).click();
+						}
+		}
+		catch(WebDriverException e){
+			e.printStackTrace();
+		}
+	}
+
+     public void clickLogout(String locatortype, String locatorvalue){
+	  
+    	 if(locatortype.equalsIgnoreCase("id")){
+    		 driver.findElement(By.id(locatorvalue)).click();
+    	 }else
+    		 if(locatortype.equalsIgnoreCase("name")){
+    			 driver.findElement(By.name(locatorvalue)).click();
+    		 }else
+    			 if(locatortype.equalsIgnoreCase("cssSelector")){
+    				 driver.findElement(By.cssSelector(locatorvalue)).click();
+    			 }else
+    				 if(locatortype.equalsIgnoreCase("className")){
+    					 driver.findElement(By.className(locatorvalue)).click();
+    				 }else
+    					 if(locatortype.equalsIgnoreCase("xpath")){
+    						 driver.findElement(By.xpath(locatorvalue)).click();
+    					 }
+  }
+	
+}
+
+
